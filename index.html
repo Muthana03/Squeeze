@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <style>
+        /* CSS code as provided earlier */
         body {
             display: flex;
             justify-content: center;
@@ -53,6 +54,16 @@
         .options {
             display: none;
             margin-top: 10px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1000;
         }
         .search-box {
             width: 100%;
@@ -87,6 +98,19 @@
         .enter-button:hover {
             background-color: #218838;
         }
+        .option {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        .hide {
+            display: none;
+        }
     </style>
 </head>
 
@@ -117,27 +141,62 @@
         <div class="options">
             <input type="text" class="search-box" placeholder="Search Country Name">
             <ol>
-                <!-- Options will go here -->
+                <!-- Country options will be injected here by JS -->
             </ol>
         </div>
     </div>
     <script>
-        function addNumber(number) {
-            const phoneInput = document.getElementById('phoneInput');
-            phoneInput.value += number;
+        // JavaScript code as provided
+        const countries = [
+            { name: 'United Kingdom', code: 'gb', phone: '44' },
+            { name: 'Jordan', code: 'jo', phone: '962' },
+            { name: 'Afghanistan', code: 'af', phone: '93' },
+            { name: 'Albania', code: 'al', phone: '355' }
+            // Add all 253 countries here
+        ];
+
+        const select_box = document.querySelector('.options'),
+            search_box = document.querySelector('.search-box'),
+            input_box = document.querySelector('input[type="tel"]'),
+            selected_option = document.querySelector('.selected-option div');
+
+        let options = null;
+
+        for (country of countries) {
+            const option = `
+            <li class="option">
+                <div>
+                    <span class="iconify" data-icon="flag:${country.code.toLowerCase()}-4x3"></span>
+                    <span class="country-name">${country.name}</span>
+                </div>
+                <strong>+${country.phone}</strong>
+            </li> `;
+
+            select_box.querySelector('ol').insertAdjacentHTML('beforeend', option);
+            options = document.querySelectorAll('.option');
         }
 
-        function backspace() {
-            const phoneInput = document.getElementById('phoneInput');
-            phoneInput.value = phoneInput.value.slice(0, -1);
+        function selectOption() {
+            console.log(this);
+            const icon = this.querySelector('.iconify').cloneNode(true),
+                phone_code = this.querySelector('strong').cloneNode(true);
+
+            selected_option.innerHTML = '';
+            selected_option.append(icon, phone_code);
+
+            input_box.value = phone_code.innerText;
+
+            select_box.classList.remove('active');
+            selected_option.classList.remove('active');
+
+            search_box.value = '';
+            select_box.querySelectorAll('.hide').forEach(el => el.classList.remove('hide'));
         }
 
-        function submitPhoneNumber() {
-            const countryCode = document.getElementById('countryCode').textContent;
-            const phoneInput = document.getElementById('phoneInput').value;
-            alert("Phone Number Entered: " + countryCode + phoneInput);
-        }
-    </script>
-</body>
-
-</html>
+        function searchCountry() {
+            let search_query = search_box.value.toLowerCase();
+            for (option of options) {
+                let is_matched = option.querySelector('.country-name').innerText.toLowerCase().includes(search_query);
+                option.classList.toggle('hide', !is_matched)
+            }
+       
