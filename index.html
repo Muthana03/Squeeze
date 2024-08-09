@@ -27,13 +27,11 @@
             font-size: 18px;
         }
         .buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
         }
         .buttons button {
-            width: 30%;
-            margin: 5px;
             padding: 15px;
             font-size: 18px;
             cursor: pointer;
@@ -50,26 +48,32 @@
 <body>
     <div class="container">
         <h2>Enter Your Phone Number</h2>
-        <input type="text" id="phoneInput" placeholder="Enter phone number" maxlength="10" readonly>
+        <input type="text" id="phoneInput" placeholder="Enter phone number" readonly>
         <div class="buttons">
-            <button onclick="addNumber(1)">1</button>
-            <button onclick="addNumber(2)">2</button>
-            <button onclick="addNumber(3)">3</button>
-            <button onclick="addNumber(4)">4</button>
-            <button onclick="addNumber(5)">5</button>
-            <button onclick="addNumber(6)">6</button>
+            <button onclick="addNumber('+')">+</button>
+            <button onclick="addNumber(0)">0</button>
+            <button onclick="backspace()">←</button>
             <button onclick="addNumber(7)">7</button>
             <button onclick="addNumber(8)">8</button>
             <button onclick="addNumber(9)">9</button>
+            <button onclick="addNumber(4)">4</button>
+            <button onclick="addNumber(5)">5</button>
+            <button onclick="addNumber(6)">6</button>
+            <button onclick="addNumber(1)">1</button>
+            <button onclick="addNumber(2)">2</button>
+            <button onclick="addNumber(3)">3</button>
         </div>
     </div>
 
     <script>
         function addNumber(number) {
             const phoneInput = document.getElementById('phoneInput');
-            if (phoneInput.value.length < 10) {
-                phoneInput.value += number;
-            }
+            phoneInput.value += number;
+        }
+
+        function backspace() {
+            const phoneInput = document.getElementById('phoneInput');
+            phoneInput.value = phoneInput.value.slice(0, -1);
         }
     </script>
 </body>
