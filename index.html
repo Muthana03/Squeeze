@@ -8,110 +8,6 @@
     <title>Telephone Input Field With Country Code & Flag | Custom Dropdown List</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-    <style>
-        /* CSS code as provided earlier */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
-        .select-box {
-            text-align: center;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            position: relative;
-        }
-        .selected-option {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .selected-option > div {
-            display: flex;
-            align-items: center;
-        }
-        .selected-option .iconify {
-            font-size: 24px;
-            margin-right: 8px;
-        }
-        .selected-option strong {
-            margin-right: 10px;
-        }
-        input[type="tel"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 18px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .options {
-            display: none;
-            margin-top: 10px;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            max-height: 200px;
-            overflow-y: auto;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 1000;
-        }
-        .search-box {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .buttons button {
-            padding: 15px;
-            font-size: 18px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        .buttons button:hover {
-            background-color: #0056b3;
-        }
-        .enter-button {
-            grid-column: span 3;
-            background-color: #28a745;
-        }
-        .enter-button:hover {
-            background-color: #218838;
-        }
-        .option {
-            padding: 10px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .option:hover {
-            background-color: #f0f0f0;
-        }
-        .hide {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -119,84 +15,18 @@
         <div class="selected-option">
             <div>
                 <span class="iconify" data-icon="flag:gb-4x3"></span>
-                <strong id="countryCode">+44</strong>
+                <strong>+44</strong>
             </div>
-            <input type="tel" id="phoneInput" placeholder="Phone Number" readonly>
-        </div>
-        <div class="buttons">
-            <button onclick="addNumber(1)">1</button>
-            <button onclick="addNumber(2)">2</button>
-            <button onclick="addNumber(3)">3</button>
-            <button onclick="addNumber(4)">4</button>
-            <button onclick="addNumber(5)">5</button>
-            <button onclick="addNumber(6)">6</button>
-            <button onclick="addNumber(7)">7</button>
-            <button onclick="addNumber(8)">8</button>
-            <button onclick="addNumber(9)">9</button>
-            <button onclick="addNumber('+')">+</button>
-            <button onclick="addNumber(0)">0</button>
-            <button onclick="backspace()">←</button>
-            <button class="enter-button" onclick="submitPhoneNumber()">Enter</button>
+            <input type="tel" name="tel" placeholder="Phone Number">
         </div>
         <div class="options">
             <input type="text" class="search-box" placeholder="Search Country Name">
             <ol>
-                <!-- Country options will be injected here by JS -->
+
             </ol>
         </div>
     </div>
-    <script>
-        // JavaScript code as provided
-        const countries = [
-            { name: 'United Kingdom', code: 'gb', phone: '44' },
-            { name: 'Jordan', code: 'jo', phone: '962' },
-            { name: 'Afghanistan', code: 'af', phone: '93' },
-            { name: 'Albania', code: 'al', phone: '355' }
-            // Add all 253 countries here
-        ];
+    <script src="script.js"></script>
+</body>
 
-        const select_box = document.querySelector('.options'),
-            search_box = document.querySelector('.search-box'),
-            input_box = document.querySelector('input[type="tel"]'),
-            selected_option = document.querySelector('.selected-option div');
-
-        let options = null;
-
-        for (country of countries) {
-            const option = `
-            <li class="option">
-                <div>
-                    <span class="iconify" data-icon="flag:${country.code.toLowerCase()}-4x3"></span>
-                    <span class="country-name">${country.name}</span>
-                </div>
-                <strong>+${country.phone}</strong>
-            </li> `;
-
-            select_box.querySelector('ol').insertAdjacentHTML('beforeend', option);
-            options = document.querySelectorAll('.option');
-        }
-
-        function selectOption() {
-            console.log(this);
-            const icon = this.querySelector('.iconify').cloneNode(true),
-                phone_code = this.querySelector('strong').cloneNode(true);
-
-            selected_option.innerHTML = '';
-            selected_option.append(icon, phone_code);
-
-            input_box.value = phone_code.innerText;
-
-            select_box.classList.remove('active');
-            selected_option.classList.remove('active');
-
-            search_box.value = '';
-            select_box.querySelectorAll('.hide').forEach(el => el.classList.remove('hide'));
-        }
-
-        function searchCountry() {
-            let search_query = search_box.value.toLowerCase();
-            for (option of options) {
-                let is_matched = option.querySelector('.country-name').innerText.toLowerCase().includes(search_query);
-                option.classList.toggle('hide', !is_matched)
-            }
-       
+</html>
