@@ -149,3 +149,41 @@ input.search-box {
 .select-box ol li .country-name {
     margin-left: .4rem;
 }
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.buttons button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--primary);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons button:hover {
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+
+.enter-button {
+    width: calc(100% - 0.5rem);
+    height: 3rem;
+    background-color: var(--secondary);
+    color: var(--primary);
+    margin-top: 0.5rem;
+}
+
+.enter-button:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
