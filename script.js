@@ -319,3 +319,7 @@ selected_option.addEventListener('click', () => {
 
 options.forEach(option => option.addEventListener('click', selectOption));
 search_box.addEventListener('input', searchCountry);
+
+input_box.addEventListener('keydown', function(event) {
+  event.preventDefault();
+});
