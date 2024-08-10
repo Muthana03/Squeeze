@@ -258,8 +258,27 @@ const select_box = document.querySelector('.options'),
   input_box = document.querySelector('input[type="tel"]'),
   selected_option = document.querySelector('.selected-option div');
 
+// Default country (Jordan)
+const defaultCountry = { name: "Jordan", code: "JO", phone: 962 };
+
+// Set default country on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const icon = document.createElement('span');
+  icon.classList.add('iconify');
+  icon.setAttribute('data-icon', `flag:${defaultCountry.code.toLowerCase()}-4x3`);
+
+  const phone_code = document.createElement('strong');
+  phone_code.textContent = `+${defaultCountry.phone}`;
+
+  selected_option.innerHTML = '';
+  selected_option.append(icon, phone_code);
+
+  input_box.value = `+${defaultCountry.phone}`;
+});
+
 let options;
 
+// Populate country options
 for (const country of countries) {
   const option = `
     <li class="option">
@@ -320,6 +339,7 @@ selected_option.addEventListener('click', () => {
 options.forEach(option => option.addEventListener('click', selectOption));
 search_box.addEventListener('input', searchCountry);
 
+// Prevent typing in the input field
 input_box.addEventListener('keydown', function(event) {
   event.preventDefault();
 });
