@@ -275,6 +275,19 @@ for (country of countries) {
     options = document.querySelectorAll('.option');
 }
 
+function addNumber(num) {
+    input_box.value += num;
+}
+
+function backspace() {
+    input_box.value = input_box.value.slice(0, -1);
+}
+
+function submitPhoneNumber() {
+    alert('Phone number submitted: ' + input_box.value);
+    // Here you can add any further processing, like sending the number to a server
+}
+
 function selectOption() {
     console.log(this);
     const icon = this.querySelector('.iconify').cloneNode(true),
