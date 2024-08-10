@@ -295,8 +295,13 @@ for (const country of countries) {
 options = document.querySelectorAll('.option');
 
 function addNumber(num) {
+  // Prevent "0" as the first character after the country code
+  if (num === '0' && input_box.value.length === input_box.value.indexOf('+') + 1) {
+    return; // Do nothing if "0" is the first character after the country code
+  }
   input_box.value += num;
 }
+
 
 function backspace() {
   input_box.value = input_box.value.slice(0, -1);
