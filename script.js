@@ -258,7 +258,9 @@ const select_box = document.querySelector('.options'),
   input_box = document.querySelector('input[type="tel"]'),
   selected_option = document.querySelector('.selected-option div');
 
-// Default country (Jordan)
+let currentCountryCode = ''; // To store the currently selected country code
+
+// Default country (Zambia)
 const defaultCountry = { name: "Jordan", code: "JO", phone: 962 };
 
 // Set default country on page load
@@ -273,7 +275,7 @@ window.addEventListener('DOMContentLoaded', () => {
   selected_option.innerHTML = '';
   selected_option.append(icon, phone_code);
 
-  input_box.value = `+${defaultCountry.phone}`;
+  currentCountryCode = `+${defaultCountry.phone}`;
 });
 
 let options;
@@ -295,20 +297,16 @@ for (const country of countries) {
 options = document.querySelectorAll('.option');
 
 function addNumber(num) {
-  // Prevent "0" as the first character after the country code
-  if (num === '0' && input_box.value.length === input_box.value.indexOf('+') + 1) {
-    return; // Do nothing if "0" is the first character after the country code
-  }
   input_box.value += num;
 }
-
 
 function backspace() {
   input_box.value = input_box.value.slice(0, -1);
 }
 
 function submitPhoneNumber() {
-  alert('Phone number submitted: ' + input_box.value);
+  const fullPhoneNumber = currentCountryCode + input_box.value;
+    
   // Additional processing can be added here
 }
 
@@ -319,7 +317,9 @@ function selectOption() {
   selected_option.innerHTML = '';
   selected_option.append(icon, phone_code);
 
-  input_box.value = phone_code.innerText;
+  currentCountryCode = phone_code.innerText;
+
+  input_box.value = ''; // Clear the input box for the user to enter the phone number part
 
   select_box.classList.remove('active');
   selected_option.classList.remove('active');
