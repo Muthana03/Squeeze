@@ -21,23 +21,22 @@ body {
   margin-top: 2rem;
 }
 
+/* Larger Logo Image */
 .logo {
-  width: 50%; /* Adjust width for responsiveness */
-  max-width: 180px; /* Maximum width for larger screens */
+  width: 180px; /* Increased the size */
   height: auto;
 }
 
 .select-box {
   position: relative;
-  width: 90%; /* Use percentage for responsiveness */
-  max-width: 26rem;
-  margin: 2rem auto;
+  width: 26rem;
+  margin: 2rem auto; /* Adjusted margin to accommodate the logo */
 }
 
 .select-box input {
   width: 100%;
   padding: 1rem .6rem;
-  font-size: 1rem; /* Slightly smaller font size for better fit */
+  font-size: 1.1rem;
   border: .1rem solid transparent;
   outline: none;
 }
@@ -118,7 +117,7 @@ input.search-box {
 .select-box ol {
   list-style: none;
   max-height: 23rem;
-  overflow-y: auto; /* Changed to auto for better scrolling behavior */
+  overflow: overlay;
 }
 
 .select-box ol::-webkit-scrollbar {
@@ -158,7 +157,7 @@ input.search-box {
 /* Button Styles with Borders */
 .buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr)); /* Responsive columns */
+  grid-template-columns: repeat(3, 3rem); /* Three columns */
   grid-gap: 0.5rem;
   margin-top: 1rem;
   justify-content: center;
@@ -167,32 +166,32 @@ input.search-box {
 .buttons button {
   width: 100%;
   height: 3rem;
-  font-size: 1rem; /* Adjust font size for better fit */
-  border: 2px solid #d9382b;
+  font-size: 1.2rem;
+  border: 2px solid #d9382b; /* Red border similar to the logo */
   border-radius: 0.5rem;
-  background-color: var(--secondary);
-  color: #fff;
+  background-color: var(--secondary); /* Orange background */
+  color: #fff; /* White text */
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for 3D effect */
 }
 
 /* Hover Effect */
 .buttons button:hover {
-  background-color: #fff;
-  color: #d9382b;
-  border-color: var(--secondary);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff; /* White background on hover */
+  color: #d9382b; /* Red text on hover */
+  border-color: var(--secondary); /* Border color changes to orange on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
 }
 
 /* Enter Button with Adjusted Border and Background */
 .enter-button {
-  grid-column: span 3;
+  grid-column: span 3; /* Span across all three columns */
   width: calc(100% - 0.5rem);
   height: 3rem;
-  background-color: #d9382b;
+  background-color: #d9382b; /* Red background similar to the logo */
   color: #fff;
-  border: 2px solid var(--secondary);
+  border: 2px solid var(--secondary); /* Orange border */
   margin-top: 0.5rem;
   transition: all 0.3s ease;
 }
@@ -200,59 +199,19 @@ input.search-box {
 .enter-button:hover {
   background-color: #fff;
   color: #d9382b;
-  border-color: #d9382b;
+  border-color: #d9382b; /* Border changes to red on hover */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Adjusted layout for specific buttons */
 .button-plus {
-  grid-column: 1 / span 1;
+  grid-column: 1 / span 1; /* Place + button in the first column */
 }
 
 .button-zero {
-  grid-column: 2 / span 1;
+  grid-column: 2 / span 1; /* Place 0 button in the second column */
 }
 
 .button-backspace {
-  grid-column: 3 / span 1;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .logo {
-    width: 70%;
-  }
-
-  .select-box {
-    width: 90%;
-    margin: 1rem auto;
-  }
-
-  .buttons {
-    grid-template-columns: repeat(auto-fit, minmax(2.5rem, 1fr)); /* Adjust columns for smaller screens */
-  }
-
-  .buttons button {
-    font-size: 0.9rem; /* Slightly smaller font size */
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    width: 90%;
-  }
-
-  .select-box {
-    width: 100%;
-    margin: 1rem auto;
-  }
-
-  .buttons {
-    grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr)); /* Adjust columns further for very small screens */
-  }
-
-  .buttons button {
-    height: 2.5rem; /* Adjust button height for smaller screens */
-    font-size: 0.8rem; /* Further adjust font size */
-  }
+  grid-column: 3 / span 1; /* Place backspace in the third column */
 }
