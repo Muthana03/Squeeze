@@ -23,7 +23,7 @@
 }
 
 .cheese-background {
-  background-image: url('/mnt/data/cheesey.png');
+  background-image: url('assets/images/cheesey.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
