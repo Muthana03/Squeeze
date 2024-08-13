@@ -208,9 +208,9 @@ input.search-box {
   margin-top: 2rem;
 }
 
-/* Logo Image */
+/* Larger Logo Image */
 .logo {
-  width: 120px; /* Adjust this size based on your design */
+  width: 180px; /* Increased the size from 120px to 180px */
   height: auto;
 }
 
