@@ -14,10 +14,23 @@ body {
   background-color: var(--secondary);
 }
 
+/* Logo Container */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Larger Logo Image */
+.logo {
+  width: 180px; /* Increased the size */
+  height: auto;
+}
+
 .select-box {
   position: relative;
   width: 26rem;
-  margin: 7rem auto;
+  margin: 2rem auto; /* Adjusted margin to accommodate the logo */
 }
 
 .select-box input {
@@ -141,6 +154,7 @@ input.search-box {
   margin-left: .4rem;
 }
 
+/* Button Styles with Borders */
 .buttons {
   display: grid;
   grid-template-columns: repeat(3, 3rem); /* Three columns */
@@ -153,26 +167,40 @@ input.search-box {
   width: 100%;
   height: 3rem;
   font-size: 1.2rem;
-  border: none;
+  border: 2px solid #d9382b; /* Red border similar to the logo */
   border-radius: 0.5rem;
-  background-color: var(--primary);
-  color: #fff;
+  background-color: var(--secondary); /* Orange background */
+  color: #fff; /* White text */
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for 3D effect */
 }
 
+/* Hover Effect */
 .buttons button:hover {
-  background-color: var(--secondary);
-  color: var(--primary);
+  background-color: #fff; /* White background on hover */
+  color: #d9382b; /* Red text on hover */
+  border-color: var(--secondary); /* Border color changes to orange on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
 }
 
+/* Enter Button with Adjusted Border and Background */
 .enter-button {
   grid-column: span 3; /* Span across all three columns */
   width: calc(100% - 0.5rem);
   height: 3rem;
-  background-color: var(--secondary);
-  color: var(--primary);
+  background-color: #d9382b; /* Red background similar to the logo */
+  color: #fff;
+  border: 2px solid var(--secondary); /* Orange border */
   margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.enter-button:hover {
+  background-color: #fff;
+  color: #d9382b;
+  border-color: #d9382b; /* Border changes to red on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Adjusted layout for specific buttons */
@@ -187,3 +215,4 @@ input.search-box {
 .button-backspace {
   grid-column: 3 / span 1; /* Place backspace in the third column */
 }
+//hi
