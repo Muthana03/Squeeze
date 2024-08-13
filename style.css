@@ -170,7 +170,7 @@ input.search-box {
   width: 100%;
   height: 3rem;
   font-size: 1.2rem;
-  border: 2px solid #d9382b; /* Added red border */
+  border: 2px solid #fff; /* Added white border */
   border-radius: 0.5rem;
   background-color: var(--secondary);
   color: #fff;
@@ -192,7 +192,7 @@ input.search-box {
   background-color: #d9382b; /* Red similar to the logo */
   color: #fff;
   margin-top: 0.5rem;
-  border: 2px solid #d9382b; /* Red border for the enter button as well */
+  border: 2px solid #fff; /* Red border for the enter button as well */
 }
 
 .enter-button:hover,
