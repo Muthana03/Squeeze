@@ -12,7 +12,7 @@
 
 /* Logo Image */
 .logo {
-  width: 260px; /* Adjust this size based on your design */
+  width: 160px; /* Adjust this size based on your design */
   height: auto;
 }
 
@@ -22,10 +22,22 @@
   box-sizing: border-box;
 }
 
+.cheese-background {
+  background-image: url('/mnt/data/cheesey.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  height: 200px; /* Adjust the height as needed */
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 body {
   font-family: sans-serif;
   background-color: var(--secondary);
-  padding: 2rem; /* Added padding to prevent content from touching the edges */
+  padding-top: 200px; /* To push the content below the image */
 }
 
 .select-box {
