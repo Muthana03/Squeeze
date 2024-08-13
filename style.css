@@ -196,3 +196,15 @@ input.search-box {
 .button-backspace {
   grid-column: 3 / span 1; /* Place backspace in the third column */
 }
+
+.logo-container {
+  text-align: center; /* Center the logo */
+  margin-bottom: 20px; /* Add some space below the logo */
+}
+
+.logo {
+  max-width: 100px; /* Set the max width of the logo */
+  height: auto; /* Keep the aspect ratio */
+  display: inline-block;
+}
+
