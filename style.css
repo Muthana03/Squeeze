@@ -3,6 +3,19 @@
   --secondary: #f6821f;
 }
 
+/* Logo Container */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Logo Image */
+.logo {
+  width: 120px; /* Adjust this size based on your design */
+  height: auto;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -157,36 +170,26 @@ input.search-box {
   width: 100%;
   height: 3rem;
   font-size: 1.2rem;
-  border: 2px solid #d9382b; /* Added red border */
+  border: none;
   border-radius: 0.5rem;
   background-color: var(--secondary);
   color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+  transition: background-color 0.3s;
 }
 
-.buttons button:hover,
-.buttons button:active { /* Apply styles when hovering or clicking */
-  background-color: #fff;
-  color: #d9382b; /* Text turns red */
-  border-color: #d9382b; /* Ensure the border stays red */
+.buttons button:hover {
+  background-color: #d9382b; /* Red similar to the logo */
+  color: #fff;
 }
 
 .enter-button {
-  grid-column: span 3;
+  grid-column: span 3; /* Span across all three columns */
   width: calc(100% - 0.5rem);
   height: 3rem;
-  background-color: #d9382b;
+  background-color: #d9382b; /* Red similar to the logo */
   color: #fff;
   margin-top: 0.5rem;
-  border: 2px solid #d9382b; /* Red border for the enter button as well */
-}
-
-.enter-button:hover,
-.enter-button:active {
-  background-color: #fff;
-  color: #d9382b;
-  border-color: #d9382b; /* Ensure the border stays red */
 }
 
 /* Media Query for Smaller Screens */
@@ -209,17 +212,4 @@ input.search-box {
   .enter-button {
     height: 2.5rem;
   }
-}
-
-/* Logo Container */
-.logo-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-/* Logo Image */
-.logo {
-  width: 180px; /* Adjust this size based on your design */
-  height: auto;
 }
