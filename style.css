@@ -170,17 +170,19 @@ input.search-box {
   width: 100%;
   height: 3rem;
   font-size: 1.2rem;
-  border: none;
+  border: 2px solid #d9382b; /* Added red border */
   border-radius: 0.5rem;
   background-color: var(--secondary);
   color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
 }
 
-.buttons button:hover {
-  background-color: #d9382b; /* Red similar to the logo */
-  color: #fff;
+.buttons button:hover,
+.buttons button:active { /* Apply styles when hovering or clicking */
+  background-color: #fff;
+  color: #d9382b; /* Text turns red */
+  border-color: #d9382b; /* Ensure the border stays red */
 }
 
 .enter-button {
@@ -190,6 +192,14 @@ input.search-box {
   background-color: #d9382b; /* Red similar to the logo */
   color: #fff;
   margin-top: 0.5rem;
+  border: 2px solid #d9382b; /* Red border for the enter button as well */
+}
+
+.enter-button:hover,
+.enter-button:active {
+  background-color: #fff;
+  color: #d9382b;
+  border-color: #d9382b; /* Ensure the border stays red */
 }
 
 /* Media Query for Smaller Screens */
