@@ -12,7 +12,7 @@
 
 /* Logo Image */
 .logo {
-  width: 200px; /* Adjust this size based on your design */
+  width: 160px; /* Adjust this size based on your design */
   height: auto;
 }
 
@@ -28,34 +28,11 @@ body {
   padding: 2rem; /* Added padding to prevent content from touching the edges */
 }
 
-/* Position the images within the .select-box */
-.left-image, .right-image {
-  position: absolute;
-  width: 60px; /* Adjust size as needed */
-  height: auto;
-}
-
-.left-image.fries {
-  top: 10px; /* Adjust positioning as needed */
-  left: -70px; /* Push the image to the left side */
-}
-
-.left-image.soda {
-  top: 100px; /* Adjust positioning as needed */
-  left: -70px; /* Push the image to the left side */
-}
-
-.right-image.burger {
-  top: 50px; /* Adjust positioning as needed */
-  right: -70px; /* Push the image to the right side */
-}
-
 .select-box {
   position: relative;
   width: 90%; /* Use a percentage for responsive width */
   max-width: 26rem; /* Maximum width for larger screens */
   margin: 5rem auto; /* Adjusted margin for responsiveness */
-  padding: 2rem;
 }
 
 .select-box input {
