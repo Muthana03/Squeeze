@@ -159,23 +159,23 @@ input.search-box {
   font-size: 1.2rem;
   border: none;
   border-radius: 0.5rem;
-  background-color: var(--primary);
+  background-color: var(--secondary); /* Orange from logo */
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .buttons button:hover {
-  background-color: var(--secondary);
-  color: var(--primary);
+  background-color: #d9382b; /* Red similar to the logo */
+  color: #fff;
 }
 
 .enter-button {
   grid-column: span 3; /* Span across all three columns */
   width: calc(100% - 0.5rem);
   height: 3rem;
-  background-color: var(--secondary);
-  color: var(--primary);
+  background-color: #d9382b; /* Red similar to the logo */
+  color: #fff;
   margin-top: 0.5rem;
 }
 
@@ -213,20 +213,3 @@ input.search-box {
   width: 180px; /* Increased the size from 120px to 180px */
   height: auto;
 }
-
-/* Adjusted Buttons */
-.buttons button {
-  background-color: var(--secondary); /* Orange from logo */
-}
-
-.buttons button:hover {
-  background-color: #d9382b; /* Red similar to the logo */
-  color: #fff;
-}
-
-/* Enter Button */
-.enter-button {
-  background-color: #d9382b; /* Red similar to the logo */
-  color: #fff;
-}
-
