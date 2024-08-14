@@ -4,11 +4,11 @@
 }
 
 .logo-container {
-  position: relative;
-  z-index: 2; /* Ensure the logo is in front of the background */
   display: flex;
   justify-content: center;
-  margin-top: 220px; /* Adjust based on the height of your background */
+  margin-top: 2rem;
+  position: relative; /* Adjust to ensure it layers correctly */
+  z-index: 1;
 }
 
 .logo {
@@ -38,9 +38,21 @@
 
 body {
   font-family: sans-serif;
-  margin: 0;
-  padding: 0;
   background-color: var(--secondary);
+  padding: 2rem; /* Added padding to prevent content from touching the edges */
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Ensure it covers the entire height */
+  background: url('assets/images/cheesey.png') no-repeat center top;
+  background-size: cover; /* Adjust the background size */
+  z-index: -1; /* Place the background behind the content */
 }
 
 .select-box {
