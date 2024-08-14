@@ -44,7 +44,7 @@ body {
 }
 
 body::before {
-  content: "";
+/*   content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -52,7 +52,7 @@ body::before {
   height: 100%; /* Ensure it covers the entire height */
   background: url('assets/images/cheesey.png') no-repeat center top;
   background-size: cover; /* Adjust the background size */
-  z-index: -1; /* Place the background behind the content */
+  z-index: -1; /* Place the background behind the content */ */
 }
 
 .select-box {
