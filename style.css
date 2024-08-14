@@ -3,16 +3,16 @@
   --secondary: #f6821f;
 }
 
-/* Logo Container */
 .logo-container {
+  position: relative; /* Allows the logo to be positioned relative to the .cheese-background */
+  z-index: 5; /* Lower z-index to appear behind the cheese */
+  margin-top: 120px; /* Adjusted to ensure the logo is below the cheese image */
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
 }
 
-/* Logo Image */
 .logo {
-  width: 260px; /* Adjust this size based on your design */
+  width: 240px; /* Adjust this size based on your design */
   height: auto;
 }
 
@@ -28,17 +28,18 @@
   background-repeat: no-repeat;
   background-position: top center;
   width: 100%;
-  height: 100px; /* Adjusted height to make the image smaller */
-  position: absolute;
+  height: 100px; /* Adjust the height based on your preference */
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 10; /* Ensures it stays on top of other elements */
 }
 
 body {
   font-family: sans-serif;
   background-color: var(--secondary);
-  padding-top: 100px; /* Adjusted padding to match the new height */
   margin: 0;
+  padding: 0;
 }
 
 .select-box {
