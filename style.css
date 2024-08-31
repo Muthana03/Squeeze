@@ -22,37 +22,11 @@
   box-sizing: border-box;
 }
 
-.cheese-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 200px; /* Adjust this height as necessary */
-  z-index: 1; /* Ensure it is on top */
-  background-image: url('assets/images/cheesey.png');
-  background-size: cover; /* Ensures the image covers the full width */
-  background-repeat: no-repeat;
-  background-position: top center; /* Centers the image horizontally */
-  pointer-events: none; /* Prevents interactions with the background */
-}
-
 body {
   font-family: sans-serif;
-  background-color: var(--secondary);
+  background-color: #fff; /* Changed background color to white */
   padding: 2rem; /* Added padding to prevent content from touching the edges */
   margin: 0;
-}
-
-body::before {
-/*   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; /* Ensure it covers the entire height */
-  background: url('assets/images/cheesey.png') no-repeat center top;
-  background-size: cover; /* Adjust the background size */
-  z-index: -1; /* Place the background behind the content */ */
 }
 
 .select-box {
