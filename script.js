@@ -321,17 +321,20 @@ function validateInput() {
 }
 
 function submitPhoneNumber() {
-  let localNumber = input_box.value.replace(/\D/g, ''); // Remove non-digits
+    let localNumber = input_box.value.replace(/\D/g, ''); // Remove non-digits
 
-  // Remove leading zero if present
-  if (localNumber.startsWith('0')) {
-    localNumber = localNumber.slice(1);
-  }
+    // Remove leading zero if present
+    if (localNumber.startsWith('0')) {
+        localNumber = localNumber.slice(1);
+    }
 
-  const fullPhoneNumber = `${currentCountryCode}${localNumber}`;
+    const fullPhoneNumber = `${currentCountryCode}${localNumber}`;
 
-  // Additional processing can be added here (e.g., save to Excel)
-  console.log(fullPhoneNumber);
+    // Set the value of the hidden input to the full phone number
+    document.getElementById('fullPhoneNumberInput').value = fullPhoneNumber;
+
+    // Submit the form
+    document.getElementById('phoneNumberForm').submit();
 }
 
 function selectOption() {
