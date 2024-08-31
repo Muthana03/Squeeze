@@ -330,11 +330,22 @@ function submitPhoneNumber() {
 
   const fullPhoneNumber = `${currentCountryCode}${localNumber}`;
 
-  // Set the value of the hidden input to the full phone number
-  document.getElementById('fullPhoneNumberInput').value = fullPhoneNumber;
-
-  // Submit the form
-  document.getElementById('phoneNumberForm').submit();
+  // Submit the form via fetch
+  fetch('/submit-phone-number', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({ fullPhoneNumber: fullPhoneNumber })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.message); // Log success message
+    input_box.value = ''; // Clear the input field
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
 }
 
 function selectOption() {
