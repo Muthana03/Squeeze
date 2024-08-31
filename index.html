@@ -41,11 +41,15 @@
 
     <div class="options">
       <input type="text" class="search-box" placeholder="Search Country Name">
-      <ol>
-
-      </ol>
+      <ol></ol>
     </div>
   </div>
+
+  <!-- Form element to handle the submission -->
+  <form id="phoneNumberForm" action="your-server-endpoint" method="POST" style="display: none;">
+    <input type="hidden" id="fullPhoneNumberInput" name="fullPhoneNumber">
+  </form>
+
   <script src="script.js"></script>
 </body>
 
