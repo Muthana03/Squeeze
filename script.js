@@ -260,7 +260,7 @@ const select_box = document.querySelector('.options'),
 
 let currentCountryCode = ''; // To store the currently selected country code
 
-// Default country (Zambia)
+// Default country (Jordan)
 const defaultCountry = { name: "Jordan", code: "JO", phone: 962 };
 
 // Set default country on page load
@@ -298,16 +298,40 @@ options = document.querySelectorAll('.option');
 
 function addNumber(num) {
   input_box.value += num;
+  validateInput();
 }
 
 function backspace() {
   input_box.value = input_box.value.slice(0, -1);
+  validateInput();
+}
+
+function validateInput() {
+  const value = input_box.value.replace(/\D/g, ''); // Remove non-digits
+
+  if (value.startsWith('0')) {
+    if (value.length > 10) {
+      input_box.value = value.slice(0, 10);
+    }
+  } else {
+    if (value.length > 9) {
+      input_box.value = value.slice(0, 9);
+    }
+  }
 }
 
 function submitPhoneNumber() {
-  const fullPhoneNumber = currentCountryCode + input_box.value;
-    
-  // Additional processing can be added here
+  let localNumber = input_box.value.replace(/\D/g, ''); // Remove non-digits
+
+  // Remove leading zero if present
+  if (localNumber.startsWith('0')) {
+    localNumber = localNumber.slice(1);
+  }
+
+  const fullPhoneNumber = `${currentCountryCode}${localNumber}`;
+
+  // Additional processing can be added here (e.g., save to Excel)
+  console.log(fullPhoneNumber);
 }
 
 function selectOption() {
