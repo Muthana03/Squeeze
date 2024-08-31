@@ -1,6 +1,6 @@
 :root {
   --primary: #111;
-  --secondary: #f6821f;
+  --secondary: #ea061c; /* Updated secondary color */
 }
 
 .logo-container {
@@ -24,7 +24,7 @@
 
 body {
   font-family: sans-serif;
-  background-color: #fff; /* Changed background color to white */
+  background-color: #fff; /* Background color is white */
   padding: 2rem; /* Added padding to prevent content from touching the edges */
   margin: 0;
 }
@@ -173,7 +173,7 @@ input.search-box {
   font-size: 1.2rem;
   border: none; /* Remove the border */
   border-radius: 0.5rem;
-  background-color: var(--secondary);
+  background-color: var(--secondary); /* Buttons use the secondary color */
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
@@ -182,14 +182,14 @@ input.search-box {
 .buttons button:hover,
 .buttons button:active { /* Apply styles when hovering or clicking */
   background-color: #fff;
-  color: #d9382b; /* Text turns red */
+  color: var(--secondary); /* Text turns the same red as the button */
 }
 
 .enter-button {
   grid-column: span 3; /* Span across all three columns */
   width: calc(100% - 0.5rem);
   height: 3rem;
-  background-color: #d9382b; /* Red similar to the logo */
+  background-color: var(--secondary); /* Red color */
   color: #fff;
   margin-top: 0.5rem;
   border: none; /* Remove the border */
@@ -198,7 +198,7 @@ input.search-box {
 .enter-button:hover,
 .enter-button:active {
   background-color: #fff;
-  color: #d9382b;
+  color: var(--secondary);
 }
 
 /* Media Query for Smaller Screens */
