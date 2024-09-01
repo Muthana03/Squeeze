@@ -330,21 +330,70 @@ function submitPhoneNumber() {
 
   const fullPhoneNumber = `${currentCountryCode}${localNumber}`;
 
-  // Submit the form via fetch
-  fetch('/submit-phone-number', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({ fullPhoneNumber: fullPhoneNumber })
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data.message); // Log success message
-    input_box.value = ''; // Clear the input field
-  })
-  .catch(error => {
-    console.error('Error:', error);
+  if (!fullPhoneNumber) {
+    alert('Please enter a phone number.');
+    return;
+  }
+
+  const fileName = 'PhoneNumbers.xlsx';
+  const filePath = cordova.file.externalDataDirectory + fileName;
+
+  window.resolveLocalFileSystemURL(filePath, function (fileEntry) {
+    // File exists, read and update it
+    fileEntry.file(function (file) {
+      var reader = new FileReader();
+
+      reader.onloadend = function (e) {
+        var data = new Uint8Array(this.result);
+        var workbook = XLSX.read(data, { type: 'array' });
+
+        // Assuming the phone numbers are in the first sheet
+        var worksheet = workbook.Sheets[workbook.SheetNames[0]];
+        var phoneNumbers = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+        // Append the new phone number
+        phoneNumbers.push([fullPhoneNumber]);
+
+        // Write back to the Excel file
+        var newWorksheet = XLSX.utils.aoa_to_sheet(phoneNumbers);
+        workbook.Sheets[workbook.SheetNames[0]] = newWorksheet;
+        var newExcelData = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+
+        saveToFile(fileEntry, newExcelData);
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+  }, function () {
+    // File doesn't exist, create it with the phone number
+    var workbook = XLSX.utils.book_new();
+    var worksheet = XLSX.utils.aoa_to_sheet([[fullPhoneNumber]]);
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    var excelData = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+
+    // Create the file
+    window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function (dirEntry) {
+      dirEntry.getFile(fileName, { create: true, exclusive: false }, function (fileEntry) {
+        saveToFile(fileEntry, excelData);
+      });
+    });
+  });
+
+  input_box.value = ''; // Clear the input field
+}
+
+function saveToFile(fileEntry, data) {
+  fileEntry.createWriter(function (fileWriter) {
+    fileWriter.onwriteend = function () {
+      alert('Phone number saved successfully!');
+    };
+
+    fileWriter.onerror = function (e) {
+      alert('Failed to save phone number: ' + e.toString());
+    };
+
+    var blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    fileWriter.write(blob);
   });
 }
 
